@@ -34,7 +34,7 @@ public class MenuService : IMenuService
                 case "4":
                     DisplaySpecificContactMenu();
                     break;
-                case "0":
+                case "5":
                     Environment.Exit(0);
                     break;
             }

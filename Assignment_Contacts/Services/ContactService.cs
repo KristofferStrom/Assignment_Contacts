@@ -31,36 +31,6 @@ public class ContactService : IContactService
 
     }
 
-    //List<IContact> _contacts = new List<IContact>
-    //{
-    //    new Contact
-    //    {
-    //        FirstName = "Kristoffer",
-    //        LastName = "Ström",
-    //        Email = "kristoffer.strom@hotmail.se",
-    //        PhoneNumber = "1234567890",
-    //        Address = new Address
-    //        {
-    //            StreetAddress = "Gubbängsvägen 90",
-    //            PostalCode = "12345",
-    //            City = "Enskede",
-    //        }
-    //    },
-    //    new Contact
-    //    {
-    //        FirstName = "Kalle",
-    //        LastName = "Ström",
-    //        Email = "kalle.strom@hotmail.com",
-    //        PhoneNumber = "1234522855",
-    //        Address = new Address
-    //        {
-    //            StreetAddress = "Ringvägen 30",
-    //            PostalCode = "12445",
-    //            City = "Stockholm",
-    //        }
-    //    }
-
-    //};
     public IContact CreateNewContact(Contact contact)
     {
         try
@@ -102,8 +72,14 @@ public class ContactService : IContactService
 
         if(contactToRemove == null)
             return false;
+        try
+        {
+            _contacts.Remove(contactToRemove);
+            Task.Run(() => _fileService.SaveToFileAsync(_filePath, JsonConvert.SerializeObject(_contacts)));
+            return true;
+        }
+        catch { }
         
-        _contacts.Remove(contactToRemove);
-        return true;
+        return false;
     }
 }
