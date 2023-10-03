@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Assignment_Contacts.Models
 {
-    public class Address : IAddress
+    public class Address
     {
         public string StreetAddress { get; set; } = null!;
         public string City { get; set; } = null!;

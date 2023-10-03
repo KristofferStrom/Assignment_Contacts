@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using Assignment_Contacts.Models;
+using System.Net;
 
 namespace Assignment_Contacts.Interfaces
 {
@@ -8,7 +9,7 @@ namespace Assignment_Contacts.Interfaces
         string LastName { get; set; }
         string PhoneNumber { get; set; }
         string Email { get; set; }
-        IAddress Address { get; set; }
+        Address Address { get; set; }
         string FullName { get;}
     }
 }
