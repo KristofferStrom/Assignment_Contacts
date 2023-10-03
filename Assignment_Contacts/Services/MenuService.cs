@@ -45,7 +45,7 @@ public class MenuService : IMenuService
     {
         _userInterfaceService.AddHeader("Lägg till kontakt");
 
-        IContact contact = new Contact
+        Contact contact = new Contact
         {
             FirstName = _userInterfaceService.GetFieldInput("Förnamn"),
             LastName = _userInterfaceService.GetFieldInput("Efternamn"),

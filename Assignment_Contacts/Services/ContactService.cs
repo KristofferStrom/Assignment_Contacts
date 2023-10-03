@@ -8,7 +8,7 @@ namespace Assignment_Contacts.Services;
 public class ContactService : IContactService
 {
     private IFileService _fileService = new FileService();
-    List<IContact> _contacts = new List<IContact>();
+    List<Contact> _contacts = new List<Contact>();
     private readonly string _filePath = "Contacts.json";
     public ContactService()
     {
@@ -23,7 +23,7 @@ public class ContactService : IContactService
 
             if(allContactsJSON != null)
             {
-                var hej = JsonConvert.DeserializeObject<List<Contact>>(allContactsJSON)!;
+                 _contacts = JsonConvert.DeserializeObject<List<Contact>>(allContactsJSON)!;
             }
 
         }
@@ -61,7 +61,7 @@ public class ContactService : IContactService
     //    }
 
     //};
-    public IContact CreateNewContact(IContact contact)
+    public IContact CreateNewContact(Contact contact)
     {
         try
         {
@@ -79,7 +79,7 @@ public class ContactService : IContactService
         return null!;
     }
 
-    public List<IContact> GetAllContacts()
+    public List<Contact> GetAllContacts()
     {
         if (_contacts.Count == 0)
             return null!;

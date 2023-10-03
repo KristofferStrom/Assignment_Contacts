@@ -1,9 +1,11 @@
-﻿namespace Assignment_Contacts.Interfaces
+﻿using Assignment_Contacts.Models;
+
+namespace Assignment_Contacts.Interfaces
 {
     public interface IContactService
     {
-        IContact CreateNewContact(IContact contact);
-        List<IContact> GetAllContacts();
+        IContact CreateNewContact(Contact contact);
+        List<Contact> GetAllContacts();
         IContact GetContact(string email);
         bool RemoveContact(string email);
     }
