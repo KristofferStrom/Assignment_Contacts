@@ -1,7 +1,6 @@
 ﻿using Assignment_Contacts.Interfaces;
 using Assignment_Contacts.Models;
 using Newtonsoft.Json;
-using System.Text.Json;
 
 namespace Assignment_Contacts.Services;
 
@@ -15,6 +14,7 @@ public class ContactService : IContactService
         GetInitialContactsFromFile();
     }
 
+    //Fyller _contacts-listan från en json-fil
     private void GetInitialContactsFromFile()
     {
         try
@@ -27,6 +27,7 @@ public class ContactService : IContactService
         catch { }
     }
 
+    //lägger till kontakten i _contacts och sparar ner den uppdaterade listan asynkront till fil.
     public IContact CreateNewContact(Contact contact)
     {
         try
@@ -45,6 +46,7 @@ public class ContactService : IContactService
         return null!;
     }
 
+    //Hämtar den aktuella _contacts-listan
     public List<Contact> GetAllContacts()
     {
         if (_contacts.Count == 0)
@@ -53,6 +55,7 @@ public class ContactService : IContactService
         return _contacts;
     }
 
+    //Hämtar IContact från _contacts baserat på email med lambda-uttryck
     public IContact GetContact(string email)
     {
         var contact = _contacts.FirstOrDefault(contact => contact.Email == email);
@@ -62,6 +65,7 @@ public class ContactService : IContactService
         return contact;
     }
 
+    //Hämtar för kontakten från _contacts baserat på email. Tar bort den från listan och sedan uppdaterar filen.
     public bool RemoveContact(string email)
     {
         var contactToRemove = _contacts.FirstOrDefault(contact => contact.Email == email);

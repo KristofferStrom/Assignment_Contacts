@@ -19,7 +19,8 @@ public class MenuService : IMenuService
                 "Se alla kontakter", 
                 "Se specifik kontakt", 
                 "Avsluta programmet");
-
+            
+            //Anropar olika metoder baserat på användarens val.
             switch (selection)
             {
                 case "1":
@@ -41,6 +42,8 @@ public class MenuService : IMenuService
         }
         while (true);
     }
+
+    //Skapar upp en kontakt utifrån användarens inmatningar. Skickar sedan vidare kontakten till _contactService.
     public void AddContactMenu()
     {
         _userInterfaceService.AddHeader("Lägg till kontakt");
@@ -61,6 +64,8 @@ public class MenuService : IMenuService
 
         _contactService.CreateNewContact(contact);
     }
+
+    //Hämtar alla kontakter från ContactService-objektet. Användaren får olika outputs beroende på om det finns kontakter eller ej.
     public void DisplayAllContactsMenu()
     {
         _userInterfaceService.AddHeader("Alla kontakter");
@@ -83,9 +88,9 @@ public class MenuService : IMenuService
 
             _userInterfaceService.ReadKey();
         }
-
-        
     }
+
+    //Hämtar en kontakt baserat på email. Olika outputs beroende på om kontakten finns eller ej.
     public void DisplaySpecificContactMenu()
     {
         _userInterfaceService.AddHeader("Välj kontakt");
@@ -110,6 +115,8 @@ public class MenuService : IMenuService
             _userInterfaceService.ReadKey();
         }
     }
+
+    //Hämtar kontakt från ContactService-objektet baserat på email. Finns kontakten tas den bort. Annars får användaren ett annat meddelande.
     public void RemoveContactMenu()
     {
         _userInterfaceService.AddHeader("Välj kontakt att ta bort");
