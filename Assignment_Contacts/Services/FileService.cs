@@ -14,7 +14,6 @@ public class FileService : IFileService
                 using StreamReader sr = new StreamReader(filePath);
                 return sr.ReadToEnd();
             }
-            
         }
         catch { }
 
@@ -23,7 +22,11 @@ public class FileService : IFileService
 
     public async Task SaveToFileAsync(string filePath, string content)
     {
-        using StreamWriter sw = new StreamWriter(filePath);
-        await sw.WriteLineAsync(content);
+        try
+        {
+            using StreamWriter sw = new StreamWriter(filePath);
+            await sw.WriteLineAsync(content);
+        }
+        catch { }
     }
 }

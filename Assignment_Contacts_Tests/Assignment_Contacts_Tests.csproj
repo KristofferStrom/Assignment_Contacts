@@ -22,4 +22,8 @@
     </PackageReference>
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Assignment_Contacts\Assignment_Contacts.csproj" />
+  </ItemGroup>
+
 </Project>

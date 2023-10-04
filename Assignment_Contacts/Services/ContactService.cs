@@ -12,23 +12,19 @@ public class ContactService : IContactService
     private readonly string _filePath = "Contacts.json";
     public ContactService()
     {
-        GetAllContactsFromFile();
+        GetInitialContactsFromFile();
     }
 
-    private void GetAllContactsFromFile()
+    private void GetInitialContactsFromFile()
     {
         try
         {
             var allContactsJSON = _fileService.ReadFromFile(_filePath);
 
             if(allContactsJSON != null)
-            {
-                 _contacts = JsonConvert.DeserializeObject<List<Contact>>(allContactsJSON)!;
-            }
-
+                _contacts = JsonConvert.DeserializeObject<List<Contact>>(allContactsJSON)!;
         }
         catch { }
-
     }
 
     public IContact CreateNewContact(Contact contact)
